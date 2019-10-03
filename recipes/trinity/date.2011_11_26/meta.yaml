@@ -20,7 +20,7 @@ source:
 requirements:
   build:
     - perl
-    - {{ compiler('c') }}
+    #- {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - openjdk >=6
     - bzip2
