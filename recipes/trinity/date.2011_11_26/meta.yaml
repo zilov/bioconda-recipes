@@ -20,12 +20,16 @@ source:
 requirements:
   build:
     - perl
-    #- {{ compiler('c') }}
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - openjdk >=6
     - bzip2
     - zlib
     - ncurses
+    - cmake
+    - autoconf
+  host:
+    - zlib
   run:
     - perl
     - openjdk >=6
