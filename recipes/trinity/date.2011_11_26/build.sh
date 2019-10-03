@@ -8,7 +8,9 @@ cd $SRC_DIR
 
 export CFLAGS="$CFLAGS -I${PREFIX}/include"
 export LDFLAGS="$LDFLAGS -L${PREFIX}/lib"
-export CPATH=${PREFIX}/include
+export CPATH="${PREFIX}/include"
+export BOOST_INCLUDE_DIR="${PREFIX}/include"
+export BOOST_LIBRARY_DIR="${PREFIX}/lib"
 
 make
 
