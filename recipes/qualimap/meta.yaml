@@ -12,6 +12,7 @@ build:
 
 requirements:
   run:
+    - fonts-conda-ecosystem
     - openjdk
     - bioconductor-noiseq
     - r-optparse
