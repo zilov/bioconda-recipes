@@ -2,7 +2,7 @@ package:
   name: lofreq
   version: '2.1.3.1'
 source:
-  url: https://github.com/CSB5/lofreq/blob/master/dist/lofreq_star-2.1.3.1.tar.gz?raw=true
+  url: https://raw.githubusercontent.com/CSB5/lofreq/v2.1.3.1/dist/lofreq_star-2.1.3.1.tar.gz
   sha256: 0caddc6163641993a71c8b94a145debcbf3b63ac969eeaf4fab297ff50817623
 build:
   number: 2
@@ -11,8 +11,8 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
-    - samtools
-    - htslib
+    - samtools==1.1
+    - htslib==1.1
   run:
     - python
 test:

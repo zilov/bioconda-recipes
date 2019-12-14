@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eu -o pipefail
 
-./configure
+./configure SAMTOOLS=${PREFIX}/include HTSLIB=${PREFIX}/include
 make
 make install
