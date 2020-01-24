@@ -1,0 +1,46 @@
+{% set name = "mnnpy" %}
+{% set version = "0.1.9.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 41cdafaf21392144b683d7acf99f7a1fc59085f9b3697cd6ace57f40dddace9c
+
+build:
+  skip: True  # [osx]  # OpenMP compilation problems
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vv"
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - python >=3.6
+    - setuptools
+    - pip
+    - cython
+  run:
+    - python >=3.6
+    - numpy
+    - scipy
+    - anndata
+    - pandas
+    # with numba 0.44, mnnpy breaks
+    # with numba 0.47, there are also problems according to https://github.com/chriscainx/mnnpy/issues/30
+    # with numba 0.45, there are warnings (it appears to work)
+    - numba !=0.44,!=0.47
+
+test:
+  requires:
+    - scanpy
+  imports:
+    - mnnpy
+
+about:
+  home: http://github.com/chriscainx/mnnpy
+  license: 'BSD 3-Clause'
+  license_file: LICENSE
+  summary: 'Mutual nearest neighbors (MNN) correction in Python'
