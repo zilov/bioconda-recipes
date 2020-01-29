@@ -29,9 +29,9 @@ requirements:
     - anndata
     - pandas
     # with numba 0.44, mnnpy breaks
+    # with numba 0.45, there are warnings, but appears to work
     # with numba 0.47, there are also problems according to https://github.com/chriscainx/mnnpy/issues/30
-    # with numba 0.45, there are warnings (it appears to work)
-    - numba !=0.44,!=0.47
+    - numba !=0.44,<0.47
 
 test:
   requires:
@@ -41,6 +41,6 @@ test:
 
 about:
   home: http://github.com/chriscainx/mnnpy
-  license: 'BSD 3-Clause'
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: 'Mutual nearest neighbors (MNN) correction in Python'
