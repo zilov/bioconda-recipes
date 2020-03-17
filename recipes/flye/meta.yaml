@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/fenderglass/Flye/archive/{{ version }}.tar.gz
-  sha256: 5f71f491228cf04237781762f01ff365125d986a2873c8116222a395e5f01317
+  sha256: 4d595f53bd68c820b43509ce6ee7284847237e70a3b4bc16c57170bb538d3947
 
 build:
   number: 0
