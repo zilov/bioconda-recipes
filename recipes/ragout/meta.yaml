@@ -13,10 +13,8 @@ requirements:
   build:
     - {{ compiler('c') }}
     - cmake
-    - setuptools
   host:
     - python
-    - setuptools
   run:
     - python
     - decorator ==4.3.0
