@@ -4,7 +4,7 @@ package:
 
 source:
   url: https://github.com/fenderglass/Ragout/archive/master.tar.gz
-  sha256: 5f71f491228cf04237781762f01ff365125d986a2873c8116222a395e5f01317
+  sha256: b786661a7876d113f853b78a0b9ebcc8c4ceacc3a80c0bfc750f1ed5fb78fe83
 
 build:
   number: 0
@@ -32,6 +32,7 @@ test:
   commands:
     - ragout -h
     - Sibelia --version
+    - python -c "import ragout.tests.test_toy as t; t.main()"
 
 about:
   home: https://github.com/fenderglass/Ragout
