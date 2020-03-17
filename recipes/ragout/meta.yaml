@@ -4,7 +4,7 @@ package:
 
 source:
   url: https://github.com/fenderglass/Ragout/archive/master.tar.gz
-  sha256: c83761b753c05ce795726b3264e7cdf26b8883172b3b5992b6dce15ca81f5337
+  sha256: 5f71f491228cf04237781762f01ff365125d986a2873c8116222a395e5f01317
 
 build:
   number: 0
