@@ -4,7 +4,7 @@ package:
 
 source:
   url: https://github.com/fenderglass/Ragout/archive/master.tar.gz
-  sha256: c0d371932000113835bdcccd63ec3bec607d62cc7c0d35c903625bd84307fbd7
+  sha256: c83761b753c05ce795726b3264e7cdf26b8883172b3b5992b6dce15ca81f5337
 
 build:
   number: 0
@@ -13,13 +13,20 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
+    - setuptools
   host:
     - python
+    - setuptools
   run:
     - python
     - decorator ==4.3.0
     - networkx ==2.2
     - sibelia
+    - setuptools
+
+extra:
+  skip-lints:
+    - uses_setuptools  #uses pkg_resources
 
 test:
   commands:
@@ -29,4 +36,4 @@ test:
 about:
   home: https://github.com/fenderglass/Ragout
   license: GPLv3
-  summary: "A tool for chromosome-level scaffolding using multiple references"
+  summary: "Chromosome-level scaffolding using multiple references"
