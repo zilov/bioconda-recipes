@@ -1,21 +1,22 @@
 package:
   name: ragout
-  version: 2.2
+  version: 2.3
 
 source:
-  url: https://github.com/fenderglass/Ragout/archive/2.2.tar.gz
-  sha256: 45d1662863d590415be3cb23f446cb1214f0865b7e0e5559ce2a5e3a456d5049
+  url: https://github.com/fenderglass/Ragout/archive/master.tar.gz
+  sha256: 9406a60ff01e9d63d7f36173903993e674fa847be1933e85dacb9ec7de92ec0e
 
 build:
-  number: 5
-  skip: True  # [py3k]
+  number: 0
 
 requirements:
   build:
     - {{ compiler('c') }}
     - cmake
+    - setuptools
   host:
     - python
+    - setuptools
   run:
     - python
     - decorator ==4.3.0
