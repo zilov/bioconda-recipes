@@ -1,10 +1,12 @@
+{% set version = "2.3" %}
+
 package:
   name: ragout
-  version: 2.3
+  version: {{ version }} 
 
 source:
-  url: https://github.com/fenderglass/Ragout/archive/master.tar.gz
-  sha256: 3d59accc1c856b35dde03061c8ae519bfbaf7963d2f065eeeeefc6dd75ffe1d6
+  url: https://github.com/fenderglass/Ragout/archive/{{ version }}.tar.gz 
+  sha256: 69d50a7ff49f03821e0143449ee0dc3e80c73e2c24568cad71948a5492613bca
 
 build:
   number: 0
