@@ -22,9 +22,7 @@ requirements:
     - openssl 1.0.2n
   run:
     - zlib
-    - cmake
     - gsl
-    - gnu-wget
     - openssl 1.0.2n
     - art
 
