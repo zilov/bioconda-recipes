@@ -17,4 +17,9 @@ make CC=$CXX ${binaries}
 mkdir -p $PREFIX/bin
 cp ${binaries} ${PREFIX}/bin
 # Fix hard-coded paths to external tools
-sed -e 's|$pathdir."/src/|"|' -e 's|$pathdir."/art_src_MountRainier/|"|' -e 's|^fileExists(.*);||' gargammel.pl > ${PREFIX}/bin/gargammel
+sed \
+  -e 's|$pathdir."/src/|"|' \
+  -e 's|$pathdir."/art_src_MountRainier/|"|' \
+  -e 's|^fileExists(.*);||' \
+  -e 's|#!/usr/bin/perl|#!/usr/bin/env perl|' \
+  gargammel.pl > ${PREFIX}/bin/gargammel
