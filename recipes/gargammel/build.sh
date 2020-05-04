@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export CFLAGS="$CFLAGS -I$PREFIX/include"
-export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
 export CPATH=${PREFIX}/include
 
 sed -i.bak 's/make -C libgab/make -C libgab CXX=$(CC)/' Makefile
