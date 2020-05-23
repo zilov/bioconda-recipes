@@ -1,19 +1,19 @@
 {% set name = "OpenMS" %}
-{% set version = "2.5.0" %}
+{% set version = "2.6.0dev" %}
 package:
   name: {{ name|lower  }}-meta
   version: {{ version  }}
 
 source:
-  url: https://github.com/OpenMS/OpenMS/releases/download/Release{{ version }}/OpenMS-{{ version }}-src.tar.gz
-  sha256: af62010174f9e04d158fadfd4efdc5c3c9acc2b85a04ab2190ddd97a2f1ad7df
+  git_url: https://github.com/OpenMS/OpenMS.git
+  git_rev: develop
   patches:
     - apple_pyoms_nofixup.patch
     - init.py.patch
     - MANIFEST.in.patch
 
 build:
-  number: 3
+  number: 0
 
 # Try this when building with GUI
 #extra:
@@ -32,7 +32,7 @@ requirements:
     - zlib
     - libtool
     - xerces-c
-    - boost-cpp
+    - boost-cpp 1.70.0
     - eigen
     - glpk
     - hdf5
@@ -72,7 +72,7 @@ outputs:
           - zlib
           - libtool
           - xerces-c
-          - boost-cpp
+          - boost-cpp 1.70.0
           - eigen
           - glpk
           - hdf5
@@ -109,13 +109,13 @@ outputs:
         - {{ pin_subpackage('libopenms', exact=True) }}
       # conda apparently does not support run_exports in subpackages yet. https://github.com/conda/conda-build/issues/3478
       # so specify everything again, such that EXACTLY the same versions are used! Current problem is boost.
-      # In the meta build it uses e.g. 1.72 but the tests for the tools suddenly choose 1.70
+      # In the meta build it uses e.g. 1.72 but the tests for the tools suddenly choose
       # I could not get the "resolved_packages" jinja function to gather dependencies from other subpackages.
         - llvm-openmp # [osx]
         - zlib
         - libtool
         - xerces-c
-        - boost-cpp
+        - boost-cpp 1.70.0
         - eigen
         - glpk
         - hdf5
@@ -143,78 +143,6 @@ outputs:
       commands:
         - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/FileMerger --help  
 
-  - name: pyopenms
-    version: {{ version }}
-    script: install_pyopenms.sh
-    # problem with pyopenms is: We could in theory skip CMake configuration
-    # and save a lot of build dependencies BUT then env.py
-    # does not contain the right paths anymore, since the build folder is copied for each
-    # subpackage.
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-        - cmake
-      host:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-        - llvm-openmp # [osx]
-        - zlib
-        - libtool
-        - xerces-c
-        - boost
-        - eigen
-        - glpk
-        - hdf5
-        - bzip2
-        - qt >=5.5
-        - libsvm
-        - seqan-library ==1.4.2
-        - coinmp
-        - sqlite
-        - python {{ python }}
-        - cython
-        - autowrap
-        - numpy
-        - pip
-        - nose
-      run:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-        - {{ pin_compatible('llvm-openmp', max_pin='x.x') }} # [osx]
-        - {{ pin_compatible('zlib', max_pin='x.x') }}
-        - {{ pin_compatible('xerces-c', max_pin='x.x') }}
-        - {{ pin_compatible('boost', max_pin='x.x') }}
-        - {{ pin_compatible('eigen', max_pin='x.x') }}
-        - {{ pin_compatible('glpk', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
-        - {{ pin_compatible('bzip2', max_pin='x.x') }}
-        - {{ pin_compatible('qt', max_pin='x.x') }}
-        - {{ pin_compatible('libsvm', max_pin='x.x') }}
-        - {{ pin_compatible('coinmp', max_pin='x.x') }}
-        - {{ pin_compatible('sqlite', max_pin='x.x') }}
-        - python {{ python }}
-        - numpy
-    test:
-      commands:
-        - python -c "import pyopenms; print(pyopenms.__version__)"
-        # We cant use the PYTHON variable since it does not exist on the biocontainer?!
-
-  - name: openms-thirdparty
-    version: {{ version }}
-    requirements:
-      run:
-        - {{ pin_subpackage('openms', exact=True) }}
-        - bumbershoot ==3_0_11579
-        - comet-ms ==2016013
-        - crux-toolkit ==3.2
-        - fido ==1.0
-        - luciphor2 ==2018_06_28
-        - msgf_plus ==2017.07.21
-        - omssa ==2.1.9
-        - pepnovo ==20101117
-        - percolator ==3.4
-        - sirius-csifingerid ==4.0.1
-        - thermorawfileparser ==1.2.3
-        - xtandem ==15.12.15.2
-        - gnuplot
 
 about:
   home: https://github.com/OpenMS/OpenMS
