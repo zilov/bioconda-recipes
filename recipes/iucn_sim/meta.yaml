@@ -1,5 +1,5 @@
 {% set name = "iucn_sim" %}
-{% set version = "1.8" %}
+{% set version = "2.1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/tobiashofmann88/iucn_extinction_simulator/archive/{{ version }}.tar.gz
-  sha256: 17b9a14c43b95a11e25ad6ca54f3ad3b7734cc115ce8e320ef5d5d3786c6d1c2
+  sha256: ad7df8a759028442138d7221f050b96f6d52b009a00022264134c14f688b45ec
 
 build:
   noarch: python
