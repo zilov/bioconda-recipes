@@ -126,6 +126,9 @@ jobs:
           command: |
             bioconda-utils build recipes config.yml \
             --git-range master HEAD
+      - run:
+          name: sleep
+          command: sleep 200000
 
   lint:
     <<: *linux
