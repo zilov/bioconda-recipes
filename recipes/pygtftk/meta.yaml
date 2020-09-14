@@ -9,8 +9,8 @@ source:
   sha256: df96f835d78ce29840c0d5d6dd4569f24c1c885895e9e9bf6cf95bee1adea4ed
 
 build:
-  number: 0
-  skip: True  # [py<36 or py>=38 or osx]
+  number: 1
+  skip: True  # [py<36 or py>=38]
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
