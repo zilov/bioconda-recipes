@@ -38,7 +38,7 @@ requirements:
     - requests >=2.13.0
     - cffi >=1.10.0
     - pyparsing >=2.2.0
-    - biopython >=1.69
+    - biopython >=1.78
     - matplotlib-base >=2.0.2
     - plotnine >=0.4.0
     - mpmath >=1.1.0
