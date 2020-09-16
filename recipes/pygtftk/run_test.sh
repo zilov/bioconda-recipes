@@ -10,8 +10,8 @@ a=`python -c "import os,pygtftk; print(os.path.dirname(pygtftk.__file__))"`
 cd $a
 for i in `find . -name "*.py" | perl -ne  'print unless(/(setup)|(plugin)|(bwig)|(libgtftk.py)|(__)/)'`
 do 
-	echo "================="
-	echo $i
+	echo "=================" >&2
+	echo $i >&2
 	nosetests --with-doctest $i
 done
 
