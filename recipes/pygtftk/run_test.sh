@@ -12,7 +12,7 @@ for i in `find . -name "*.py" | perl -ne  'print unless(/(setup)|(plugin)|(bwig)
 do 
 	echo "=================" >&2
 	echo $i >&2
-	nosetests --with-doctest $i
+	nosetests --with-doctest $i >&2
 done
 
 ## bats tests skipped to save biconda CI resources.
