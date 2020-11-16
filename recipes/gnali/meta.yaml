@@ -28,6 +28,8 @@ requirements:
     - pandas
     - pysam
     - filelock
+    - pyyaml
+    - py-bgzip
 
 test:
   imports:
