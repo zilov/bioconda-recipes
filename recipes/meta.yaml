@@ -1,0 +1,32 @@
+{% set version = "0.1.0" %}
+
+package:
+  name: terminus
+  version: {{ version }}
+
+build:
+  number: 1
+
+source:
+  url: https://github.com/COMBINE-lab/alevin-fry/archive/v{{ version }}.tar.gz
+  sha256: f8d76adb8a6937a847659792a50d59d6a1b80646a1d76cbdc97768fe64b32210
+
+requirements:
+  build:
+    - rust >=1.45
+    - clangdev
+    - {{ compiler('cxx') }}
+    - pkg-config
+  host:
+    - clangdev
+  run:
+
+test:
+  commands:
+    - alevin-fry --help
+
+about:
+  home: https://github.com/COMBINE-lab/alevin-fry
+  license: BSD 3-Clause
+  license_file: LICENSE
+  summary: alevin-fry is a tool for the efficient processing of single-cell data based on RAD files produced by alevin
