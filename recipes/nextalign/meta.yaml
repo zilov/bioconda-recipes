@@ -1,0 +1,34 @@
+{% set version = "0.1.6 %}
+{% set sha256 = "f3890c147dabf4cd11ea085e33ef4f00e198990ce25e9cc3d1dda2cf3c2306e2" %}
+
+package:
+  name: nextalign
+  version: {{ version }}
+
+source:
+  sha256: '{{sha256}}'
+  url: "https://github.com/nextstrain/nextclade/archive/nextalign-{{ version }}.tar.gz"
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - cppcheck
+    - conan
+    - ccache
+  host:
+    - zlib
+  run:
+    - zlib
+
+test:
+  commands:
+    - "nextalign --help"
+
+about:
+  home: "https://github.com/nextstrain/nextclade/tree/master/packages/nextalign_cli"
+  license: MIT
+  summary: "Nextalign is a viral genome sequence alignment algorithm used in Nextclade; Nextalign performs pairwise alignment of provided sequences against a given reference sequence using banded local alignment algorithm with affine gap-cost. Band width and rough relative positions are determined through seed matching."
